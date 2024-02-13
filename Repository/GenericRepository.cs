@@ -26,6 +26,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             string tableName = GetTableName();
             string columns = GetColumns(excludeKey: true);
             string properties = GetPropertyNames(excludeKey: true);
+            // INSERT INTO AddressDTO ({Address, City, State}) VALUES ({1189 choctaw ridge drive}, {Holts Summit}, {MO})
             string query = $"INSERT INTO {tableName} ({columns}) VALUES ({properties})";
 
             rowsEffected = _connection.Execute(query, entity);
